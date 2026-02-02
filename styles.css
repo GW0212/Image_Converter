@@ -1,0 +1,355 @@
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+  --primary: #2563eb;
+}
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  background: var(--bg); /* 배경 밝게 */
+  color: var(--text);
+}
+.app{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+}
+.header{ text-align: center; margin-bottom: 18px; }
+.title{
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.3px;
+  text-align: center; /* 모든 제목 중앙 정렬 */
+}
+.subtitle{
+  margin: 10px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+  margin: 14px 0;
+}
+.section-title{
+  margin: 0 0 12px;
+  font-size: 18px;
+  text-align: center; /* 모든 제목 중앙 정렬 */
+}
+.dropzone{
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  background: #fbfcff;
+}
+.dropzone:focus{ border-color: #93c5fd; }
+.dropzone.dragover{ border-color: #60a5fa; background: #f0f7ff; }
+.dz-inner{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.dz-icon{ font-size: 34px; }
+.dz-strong{ font-weight: 700; }
+.dz-muted{ color: var(--muted); margin-top: 2px; }
+
+.preview-wrap{
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.preview{
+  width: 220px;
+  height: 160px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+.meta{ display: grid; gap: 8px; text-align: center; }
+.meta-k{ color: var(--muted); margin-right: 8px; }
+.meta-v{ font-weight: 600; }
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 720px){
+  .preview-wrap{ grid-template-columns: 1fr; }
+  .preview{ width: 100%; height: 200px; }
+  .grid{ grid-template-columns: 1fr; }
+  .meta{ text-align: center; }
+}
+.field label{
+  display:block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.field input[type="number"], .field select{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+  background: #fff;
+}
+.field input[type="number"]:focus, .field select:focus{
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(147,197,253,0.45);
+}
+.quality{ display:flex; align-items:center; gap: 10px; justify-content: center; }
+.quality input[type="range"]{ width: 100%; }
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 44px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background:#f8fafc;
+  font-weight: 700;
+}
+.hint{ margin-top: 8px; font-size: 12px; color: var(--muted); text-align: center; }
+.actions{ display:flex; justify-content:center; gap: 10px; flex-wrap: wrap; }
+.ratio-tools{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+.btn{
+  border: 1px solid var(--border);
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.02s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn:disabled{ cursor: not-allowed; opacity: 0.55; }
+.btn-primary{
+  border-color: rgba(37, 99, 235, 0.25);
+  background: rgba(37, 99, 235, 0.10);
+}
+.btn-primary:hover{ background: rgba(37, 99, 235, 0.14); }
+.btn-secondary{
+  border-color: rgba(100,116,139,0.3);
+  background: #f8fafc;
+}
+.btn-secondary:hover{ background: #f1f5f9; }
+.status{ margin-top: 12px; text-align: center; color: var(--muted); min-height: 20px; }
+.footer{ margin-top: 18px; color: var(--muted); text-align: center; font-size: 12px; }
+.sr-only{
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
+}
+
+
+/* Preview: hide broken image icon until loaded, center align */
+.preview-wrap{
+  justify-items: center;
+}
+.preview{
+  display: none; /* shown only after image loaded */
+}
+.preview.is-ready{
+  display: block;
+}
+.preview-placeholder{
+  width: 220px;
+  height: 160px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--muted);
+  font-weight: 700;
+}
+@media (max-width: 720px){
+  .preview-placeholder{ width: 100%; height: 200px; }
+}
+
+/* Ratio preset chips */
+.field-span-2{ grid-column: 1 / -1; }
+.presets{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+.chip{
+  border: 1px solid var(--border);
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.chip:hover{ background: #f1f5f9; }
+
+
+/* --- Preview layout (요구사항): 미리보기 칸 중앙 + 메타(원본크기/파일명) 하단 --- */
+.preview-wrap{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+}
+.meta{
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+
+/* --- Preview single box (요구사항): placeholder와 이미지가 같은 박스 --- */
+.preview-box{
+  width: 220px;
+  height: 160px;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.preview-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+.preview-img.is-ready{ display: block; }
+.preview-empty{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 800;
+}
+@media (max-width: 720px){
+  .preview-box{ width: 100%; height: 200px; }
+}
+
+
+/* --- Preview aspect-ratio fix: 박스 비율을 업로드 이미지에 맞춤 --- */
+.preview-box{
+  width: min(320px, 100%);
+  height: auto;
+  aspect-ratio: 11 / 8; /* default, JS에서 이미지 로딩 시 실제 비율로 갱신 */
+}
+.preview-img{
+  object-fit: contain;
+}
+
+
+/* --- Fix: hide '미리보기' text when image is ready --- */
+.preview-box.is-ready .preview-empty{
+  display: none !important;
+}
+
+
+/* --- Dropzone layout: 버튼을 '또는 아래 버튼으로 선택' 아래로 --- */
+.dz-inner{ flex-direction: column !important; }
+.dz-top{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 14px;
+  flex-wrap: wrap;
+  text-align:center;
+}
+.dz-actions{
+  margin-top: 10px;
+  display:flex;
+  justify-content:center;
+}
+
+
+/* --- Title effect (요구사항): 제목 효과 --- */
+.title{
+  background: linear-gradient(90deg, #0f172a 0%, #1d4ed8 45%, #0f172a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  text-shadow: 0 6px 18px rgba(2,6,23,0.10);
+  position: relative;
+}
+.title::after{
+  content: "";
+  display: block;
+  width: 160px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(37,99,235,0.15), rgba(37,99,235,0.9), rgba(37,99,235,0.15));
+}
+
+
+/* --- Separate dropzone and preview boxes --- */
+.dropzone{
+  margin-bottom: 28px;
+}
+.preview-wrap{
+  margin-top: 0 !important;
+}
+
+
+/* --- Strong separation: dropzone and preview are independent blocks --- */
+.preview-wrap{
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+
+/* --- Basis selector styles --- */
+.basis{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.radio{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  cursor: pointer;
+  font-weight: 800;
+}
+.radio input{ cursor: pointer; }
+.radio:hover{ background: #f1f5f9; }
